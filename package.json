@@ -1,0 +1,17 @@
+{
+  "name": "twilio-sample",
+  "description": "a test app for BIG SCREENS",
+  "version": "0.0.1-13",
+  "private": true,
+  "scripts": {
+    "start": "app.js"
+  },
+  "dependencies": {
+    "express": "3.x",
+    "jade": "0.27.5"
+  },
+  "subdomain": "twil-test",
+  "engines": {
+    "node": "0.8.x"
+  }
+}

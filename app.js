@@ -13,6 +13,9 @@ var express = require('express')
 
 var app = express();
 
+// global var to pass "message" between routes
+var message;
+
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -34,19 +37,22 @@ app.get('/', routes.index);
 // Create a function to handle our incoming SMS requests (POST request)
 app.post('/incoming', function(req, res) {
   // Extract the From and Body values from the POST data
-  var message = req.body.Body;
+  message = req.body.Body;
   var from = req.body.From;
   sys.log('From: ' + from + ', Message: ' + message);
-  // create point for Processing to ping
-  res.send(message);
   
   // Return sender a very nice message
   // twiML to be executed when SMS is received
-  var twiml = '<Response><Sms>test message receieved.</Sms></Response>';
+  var twiml = '<Response><Sms>HA! HA! This response is auto generated.</Sms></Response>';
   res.send(twiml, {'Content-Type':'text/xml'}, 200);
 });
 
-app.get('/users', user.list);
+// Processing pings this URL for messages
+app.get('/outgoing', function(req, res) {
+  res.send("incoming message " + message);
+
+
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

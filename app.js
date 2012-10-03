@@ -37,10 +37,12 @@ app.post('/incoming', function(req, res) {
   var message = req.body.Body;
   var from = req.body.From;
   sys.log('From: ' + from + ', Message: ' + message);
+  // create point for Processing to ping
+  res.send(message);
   
   // Return sender a very nice message
   // twiML to be executed when SMS is received
-  var twiml = '<Response><Sms>HA! HA! This response is auto generated.</Sms></Response>';
+  var twiml = '<Response><Sms>test message receieved.</Sms></Response>';
   res.send(twiml, {'Content-Type':'text/xml'}, 200);
 });
 

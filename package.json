@@ -1,7 +1,7 @@
 {
-  "name": "twilio-sample",
-  "description": "a test app for BIG SCREENS",
-  "version": "0.0.1-13",
+  "name": "res-send-proc",
+  "description": "",
+  "version": "0.0.1-14",
   "private": true,
   "scripts": {
     "start": "app.js"
@@ -10,7 +10,7 @@
     "express": "3.x",
     "jade": "0.27.5"
   },
-  "subdomain": "twil-test",
+  "subdomain": "res-send-proc",
   "engines": {
     "node": "0.8.x"
   }
